@@ -10,7 +10,7 @@ async function prediction() {
   const p=DATA.periode;
   const s=DATA.WaveS;
   const h=DATA.WaveH;
-  const model = await tf.loadLayersModel(  'https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/model.json');
+  const model = await tf.loadLayersModel('https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/model.json');
   var X= tf.tensor2d([DATA.periode,DATA.WaveH]).transpose();
   //console.log(X.print());  
   //console.log(model.summary());
@@ -55,51 +55,35 @@ async function getData() {
 //affichage web
 (async() => {
   const DATA=  await prediction()
-var trace2 = {
-  x: [],
-  y: [],
-  xaxis: 'x2',
-  yaxis: 'y2',
-  mode: 'lines',
-  line: {color: '#DF56F1'}
-};
-var trace3 = {
-  x: [],
-  y: [],
-  xaxis: 'x2',
-  yaxis: 'y2',
-  mode: 'lines',
-  line: {color: '#f17856'}
-};
-var layout = {
-  xaxis2: {
-    type: 'date', 
-    anchor: 'y2', 
-    domain: [0, 1]
-  },
-  yaxis2: {
-    anchor: 'x2', 
-    domain: [0, 1]},  
-};
-var data = [trace2,trace3]; 
-var cnt = 0;
-
-Plotly.plot('graph', data, layout);  
-
-function rand() {
-  return Math.random();
-}
-var interval = setInterval(function() {
-cnt++;
-var time = new Date();
   
-  var update = {
-    x: [[cnt], [cnt]],
-    y: [DATA.s, DATA.arr]
+  function ordo(){
+    var a=[];
+    var n=0;
+    while (n<8712) {
+      a.push(n);
+      n++}
+     return a
   }
   
-  Plotly.extendTraces('graph', update, [0,1],300)
-   
-}, 70);
+var trace1 = {
+  x: ordo(),
+  y: DATA.s,
+  type: 'scatter',
+  name:'reel'
+};
+
+var trace2 = {
+  x: ordo(),
+  y: DATA.arr,
+  type: 'scatter',
+  name:'prediction'
+};
+var layout = {
+  yaxis: {range: [0, 16]}
+};
+
+var data = [trace1, trace2];
+
+Plotly.newPlot('graph', data,layout);
   
   })();
