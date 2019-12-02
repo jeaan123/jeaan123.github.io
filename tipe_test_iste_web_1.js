@@ -90,15 +90,15 @@ function rand() {
   return Math.random();
 }
 var interval = setInterval(function() {
-
+cnt++;
 var time = new Date();
   
   var update = {
-    x: [[time], [time]],
+    x: [[cnt], [cnt]],
     y: [DATA.s, DATA.arr]
   }
   
-  Plotly.extendTraces('graph', update, [0,1],100)
+  Plotly.extendTraces('graph', update, [0,1],300)
    
 }, 70);
   
