@@ -36,12 +36,12 @@ async function getData() {
           if(cols[8]!=""){
           WaveS.push(parseFloat(cols[8]));}
           else{ WaveS.push(parseFloat(cols[9]));}
-          if(cols[12]!=""){            
-          WaveH.push(parseFloat(cols[12]));}
-          else{WaveH.push(parseFloat(cols[11]));}
-          if(cols[13]!=""){
-          periode.push(parseFloat(cols[13]));}
-          else{periode.push(parseFloat(cols[12]));}
+            if(cols[11]!=""){            
+          WaveH.push(parseFloat(cols[11]));}
+          else{WaveH.push(parseFloat(cols[12]));}
+          if(cols[14]!=""){
+          periode.push(parseFloat(cols[14]));}
+          else{periode.push(parseFloat(cols[15]));}
         });
         WaveS.splice(8712,1);
         periode.splice(8712,1);
