@@ -6,7 +6,7 @@ const WaveS = [];
 //recuperatioin model tfjs
  
 function change_valeur() {
-select = document.getElementById("select");
+var select = document.getElementById("select");
 choice = select.selectedIndex ; // Récupération de l'index du <option> choisi
 return{choice};
 }
