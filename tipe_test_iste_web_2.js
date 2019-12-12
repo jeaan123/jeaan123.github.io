@@ -24,7 +24,7 @@ async function prediction() {
 //recuperation donne csv
 
 async function getData() {
-        const response = await fetch('https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/201851000.csv');
+        const response = await fetch('https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/donne.csv');
         const data = await response.text();
         
         const years = [];
