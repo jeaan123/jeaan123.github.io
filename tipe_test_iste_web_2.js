@@ -5,6 +5,13 @@ const WaveS = [];
 //const DATA=  await getData()
 //recuperatioin model tfjs
  
+function change_valeur() {
+select = document.getElementById("select");
+choice = select.selectedIndex ; // Récupération de l'index du <option> choisi
+return{choice};
+}
+
+
 async function prediction() {
   const DATA=  await getData();
   const p=DATA.periode;
