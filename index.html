@@ -17,12 +17,10 @@
 
 <body>
 <div>
-<input type="text" id="modelload" name="modelload"
-           placeholder="url du model">
-           <button>Envoyer</button>
-           <input type="text" id="dataset" name="dataset"
-           placeholder="url des donnes de bncf">
-           <button>Envoyer</button>
+<select name="select" size="1" id="select" onchange="change_valeur();">
+  <option value="1">proche Island</option>
+  <option value="2">proche Tampa,Floride</option>
+</select>
  </div>
 <div id="graph">
 </body>
