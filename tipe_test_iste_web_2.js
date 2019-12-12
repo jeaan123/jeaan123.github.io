@@ -36,8 +36,8 @@ async function getData(n) {
         const lien = ['https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station1.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station2.csv'];
         var response;
         if (n==1){
-        response = await fetch(lien[valeur().choice]);
-      console.log(valeur().choice);}
+        response = await fetch(lien[valeur().choice]);}
+      //console.log(valeur().choice);
         else{
          response = await fetch(lien[0]);}
         const data = await response.text();
@@ -65,7 +65,7 @@ async function getData(n) {
 //affichage web  et boucle principal (le n sert a indiquer le changement dans la bar select)
 async function affiche(n=0){
   const DATA=  await prediction(n)
-  console.log(DATA.s);
+  //console.log(DATA.s);
   function ordo(){
     var a=[];
     var n=0;
