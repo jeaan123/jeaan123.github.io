@@ -1,19 +1,15 @@
 
-const periode =[];
-const WaveH =[];
-const WaveS = [];
-//const DATA=  await getData()
-//recuperatioin model tfjs
- 
-function change_valeur() {
+// fonction des parametres de la page
+function valeur() {
 var select = document.getElementById("select");
 choice = select.selectedIndex ; // Récupération de l'index du <option> choisi
 return{choice};
 }
 
+//recuperatioin model tfjs 
 
-async function prediction() {
-  const DATA=  await getData();
+async function prediction(n) {
+  const DATA=  await getData(n);
   const p=DATA.periode;
   const s=DATA.WaveS;
   const h=DATA.WaveH;
@@ -21,6 +17,8 @@ async function prediction() {
   var X= tf.tensor2d([DATA.periode,DATA.WaveH]).transpose();
   //console.log(X.print());  
   //console.log(model.summary());
+  //model.getWeights()[0].print();
+ // X.print();
   const prediction = model.predict(X);
   const values = prediction.dataSync();
   const arr = Array.from(values);
@@ -30,47 +28,44 @@ async function prediction() {
 
 //recuperation donne csv
 
-async function getData() {
-        const lien = ['https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/donne.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/201851000.csv'];
-        //const response = await fetch(lien[change_valeur().choice]);
-        //var num = change_valeur().choice;
-        //console.log(num);
-        const response = await fetch(lien[1]);
+async function getData(n) {
+        const lien = ['https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station1.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station2.csv'];
+        var response;
+        if (n==1){
+        response = await fetch(lien[valeur().choice]);
+      console.log(valeur().choice);}
+        else{
+         response = await fetch(lien[0]);}
         const data = await response.text();
-        
-        const years = [];
-
+        const periode =[];
+        const WaveH =[];
+        const WaveS = [];
         const rows = data.split('\n').slice(1);
         rows.forEach(row => {
-          const cols = row.split(' ');
-          years.push(cols[0]);
-          if(cols[8]!=""){
-          WaveS.push(parseFloat(cols[8]));}
-          else{ WaveS.push(parseFloat(cols[9]));}
-            if(cols[11]!=""){            
-          WaveH.push(parseFloat(cols[11]));}
-          else{WaveH.push(parseFloat(cols[12]));}
-          if(cols[14]!=""){
-          periode.push(parseFloat(cols[14]));}
-          else{periode.push(parseFloat(cols[15]));}
+          const cols = row.split(',');
+          WaveS.push(parseFloat(cols[0])) ;
+          WaveH.push(parseFloat(cols[1]));
+          periode.push(parseFloat(cols[2]));
         });
-        WaveS.splice(8712,1);
-        periode.splice(8712,1);
-        WaveH.splice(8712,1);
+        
+        WaveS.splice(WaveS.length-1,1);
+        periode.splice(periode.length-1,1);
+        WaveH.splice(WaveH.length-1,1);
         //console.log(periode);
+        ///console.log(WaveH);
         return {WaveS,periode,WaveH};
       }
 
 
 
-//affichage web
-(async() => {
-  const DATA=  await prediction()
-  
+//affichage web  et boucle principal (le n sert a indiquer le changement dans la bar select)
+async function affiche(n=0){
+  const DATA=  await prediction(n)
+  console.log(DATA.s);
   function ordo(){
     var a=[];
     var n=0;
-    while (n<8712) {
+    while (n<DATA.s.length) {
       a.push(n);
       n++}
      return a
@@ -97,4 +92,7 @@ var data = [trace1, trace2];
 
 Plotly.newPlot('graph', data,layout);
   
-  })();
+  };
+ 
+ affiche();
+ 
