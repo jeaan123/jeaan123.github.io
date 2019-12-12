@@ -5,6 +5,10 @@ var select = document.getElementById("select");
 choice = select.selectedIndex ; // Récupération de l'index du <option> choisi
 return{choice};
 }
+//reactiver la roue de chargement
+function roue(){
+  document.getElementById("roue").style.display = "";
+}
 
 //recuperatioin model tfjs 
 
@@ -91,7 +95,7 @@ var layout = {
 var data = [trace1, trace2];
 
 Plotly.newPlot('graph', data,layout);
-  
+document.getElementById("roue").style.display = "none";  
   };
  
  affiche();
