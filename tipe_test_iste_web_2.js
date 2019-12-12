@@ -7,8 +7,8 @@ const WaveS = [];
  
 function change_valeur() {
 select = document.getElementById("select");
-choix = select.selectedIndex ; // Récupération de l'index du <option> choisi
-return{choix};
+choice = select.selectedIndex ; // Récupération de l'index du <option> choisi
+return{choice};
 }
 
 
@@ -31,8 +31,8 @@ async function prediction() {
 //recuperation donne csv
 
 async function getData() {
-        var lien=['https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/donne.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/201851000.csv'];
-        const response = await fetch(lien[change_valeur().choix]);
+        const lien = ['https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/donne.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/201851000.csv'];
+        const response = await fetch(lien[change_valeur().choice]);
         const data = await response.text();
         
         const years = [];
