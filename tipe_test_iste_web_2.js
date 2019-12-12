@@ -32,7 +32,8 @@ async function prediction() {
 
 async function getData() {
         const lien = ['https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/donne.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/201851000.csv'];
-        const response = await fetch(lien[change_valeur().choice]);
+        //const response = await fetch(lien[change_valeur().choice]);
+        const response = await fetch(lien[1]);
         const data = await response.text();
         
         const years = [];
