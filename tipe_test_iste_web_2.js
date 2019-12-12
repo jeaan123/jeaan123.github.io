@@ -7,7 +7,7 @@ const WaveS = [];
  
 function change_valeur() {
 select = document.getElementById('select');
-choice = select.selectedIndex ; // Récupération de l'index du <option> choisi
+choix = select.selectedIndex ; // Récupération de l'index du <option> choisi
 return{choix};
 }
 
