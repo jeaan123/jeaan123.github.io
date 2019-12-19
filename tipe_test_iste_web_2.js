@@ -8,6 +8,7 @@ return{choice};
 //reactiver la roue de chargement
 function roue(){
   document.getElementById("roue").style.display = "";
+  document.getElementById("textes").style.display = "none";
 }
 
 //recuperatioin model tfjs 
@@ -110,7 +111,8 @@ var data = [trace1, trace2];
 var data1 = [trace3,trace4];
 Plotly.newPlot('graph2', data1,layout);
 Plotly.newPlot('graph', data,layout);
-document.getElementById("roue").style.display = "none";  
+document.getElementById("roue").style.display = "none";
+document.getElementById("textes").style.display = "";
   };
  
  affiche();
