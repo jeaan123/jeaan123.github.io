@@ -34,7 +34,7 @@ async function prediction(n) {
 //recuperation donne csv
 
 async function getData(n) {
-        const lien = ['https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station1.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station2.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station3.csv'];
+        const lien = ['https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station1.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station2p.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station3.csv'];
         var response;
         if (n==1){
         response = await fetch(lien[valeur().choice]);}
