@@ -92,12 +92,14 @@ var trace2 = {
   x: ordo(),
   y: DATA.p,
   type: 'scatter',
+  line: {color:'rgb(97,255,51}'},
   name:'periode'
 };
   var trace4 = {
   x: ordo(),
   y: DATA.h,
   type: 'scatter',
+  line: {color:'rgb(250,74,74}'},
   name:'hauteur des vagues'
 };
 var layout = {
@@ -106,7 +108,7 @@ var layout = {
 
 var data = [trace1, trace2];
 var data1 = [trace3,trace4];
-Plotly.newPlot('graph2', data1);
+Plotly.newPlot('graph2', data1,layout);
 Plotly.newPlot('graph', data,layout);
 document.getElementById("roue").style.display = "none";  
   };
