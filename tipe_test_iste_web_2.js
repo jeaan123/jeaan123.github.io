@@ -88,12 +88,25 @@ var trace2 = {
   type: 'scatter',
   name:'prediction'
 };
+  var trace3 = {
+  x: ordo(),
+  y: DATA.p,
+  type: 'scatter',
+  name:'periode'
+};
+  var trace4 = {
+  x: ordo(),
+  y: DATA.h,
+  type: 'scatter',
+  name:'hauteur des vagues'
+};
 var layout = {
   yaxis: {range: [0, 16]}
 };
 
 var data = [trace1, trace2];
-
+var data1 = [trace3,trace4];
+Plotly.newPlot('graph2', data1);
 Plotly.newPlot('graph', data,layout);
 document.getElementById("roue").style.display = "none";  
   };
