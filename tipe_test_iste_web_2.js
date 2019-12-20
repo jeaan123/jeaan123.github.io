@@ -18,7 +18,7 @@ async function prediction(n) {
   const p=DATA.periode;
   const s=DATA.WaveS;
   const h=DATA.WaveH;
-  const model = await tf.loadLayersModel('https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/model4.json');
+  const model = await tf.loadLayersModel('https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/model4/model.json');
   var X= tf.tensor2d([DATA.periode,DATA.WaveH]).transpose();
   //console.log(X.print());  
   //console.log(model.summary());
