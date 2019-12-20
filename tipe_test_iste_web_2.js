@@ -1,4 +1,6 @@
 
+import * as tf from '@tensorflow/tfjs';
+
 // fonction des parametres de la page
 function valeur() {
 var select = document.getElementById("select");
