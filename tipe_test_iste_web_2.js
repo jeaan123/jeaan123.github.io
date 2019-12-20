@@ -108,8 +108,8 @@ var layout = {
 
 var data = [trace1, trace2];
 var data1 = [trace3,trace4];
-Plotly.newPlot('graph2', data1,layout);
-Plotly.newPlot('graph', data,layout);
+Plotly.newPlot('graph2', data1);
+Plotly.newPlot('graph', data);
 document.getElementById("roue").style.display = "none";
 document.getElementById("textes").style.display = "";
   };
