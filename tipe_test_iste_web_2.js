@@ -18,7 +18,7 @@ async function prediction(n) {
   const p=DATA.periode;
   const s=DATA.WaveS;
   const h=DATA.WaveH;
-  const model = await tf.loadLayersModel('https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/model.json');
+  const model = await tf.loadLayersModel('https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/model4.json');
   var X= tf.tensor2d([DATA.periode,DATA.WaveH]).transpose();
   //console.log(X.print());  
   //console.log(model.summary());
@@ -34,7 +34,7 @@ async function prediction(n) {
 //recuperation donne csv
 
 async function getData(n) {
-        const lien = ['https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station1.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station2p.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station3.csv'];
+        const lien = ['https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station1.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station2p.csv','https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/station3p.csv'];
         var response;
         if (n==1){
         response = await fetch(lien[valeur().choice]);}
