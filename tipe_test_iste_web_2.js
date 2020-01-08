@@ -1,4 +1,6 @@
 // fonction des parametres de la page
+
+
 function valeur() {
 var select = document.getElementById("select");
 choice = select.selectedIndex ; // Récupération de l'index du <option> choisi
@@ -10,7 +12,8 @@ function roue(){
   document.getElementById("textes").style.display = "none";
 }
 
-//recuperatioin model tfjs 
+
+//recuperatioin model tfjs
 
 async function prediction(n) {
   const DATA=  await getData(n);
@@ -19,14 +22,14 @@ async function prediction(n) {
   const h=DATA.WaveH;
   const model = await tf.loadLayersModel('https://raw.githubusercontent.com/jeaan123/wind-wave-tipe/master/model4/model.json');
   var X= tf.tensor2d([DATA.periode,DATA.WaveH]).transpose();
-  //console.log(X.print());  
+  //console.log(X.print());
   //console.log(model.summary());
   //model.getWeights()[0].print();
  // X.print();
   const prediction = model.predict(X);
   const values = prediction.dataSync();
   const arr = Array.from(values);
-  //console.log(arr);  
+  //console.log(arr);
   return{p,h,s,arr};
 };
 
@@ -51,7 +54,7 @@ async function getData(n) {
           WaveH.push(parseFloat(cols[1]));
           periode.push(parseFloat(cols[2]));
         });
-        
+
         WaveS.splice(WaveS.length-1,1);
         periode.splice(periode.length-1,1);
         WaveH.splice(WaveH.length-1,1);
@@ -74,7 +77,7 @@ async function affiche(n=0){
       n++}
      return a
   }
-  
+
 var trace1 = {
   x: ordo(),
   y: DATA.s,
@@ -108,11 +111,32 @@ var layout = {
 
 var data = [trace1, trace2];
 var data1 = [trace3,trace4];
-Plotly.newPlot('graph2', data1);
-Plotly.newPlot('graph', data);
+Plotly.newPlot('graph2', data1,{responsive: true});
+Plotly.newPlot('graph', data,{responsive: true});
 document.getElementById("roue").style.display = "none";
 document.getElementById("textes").style.display = "";
+
+
+/// synchrone zoom
+function relayout(ed, divs) {
+  divs.forEach((div, i) => {
+    let x = div.layout.xaxis;
+    if (ed["xaxis.autorange"] && x.autorange) return;
+    if (x.range[0] != ed["xaxis.range[0]"] || x.range[1] != ed["xaxis.range[1]"])
+      Plotly.relayout(div, ed);
+  });
+}
+
+var plots = [graph, graph2];
+plots.forEach(div => {
+  div.on("plotly_relayout", function(ed) {
+    console.log(ed)
+    relayout(ed, plots);
+  });
+});
+
+
+
   };
- 
+
  affiche();
- 
