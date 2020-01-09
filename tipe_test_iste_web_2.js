@@ -95,7 +95,7 @@ var trace2 = {
   x: ordo(),
   y: DATA.p,
   type: 'scatter',
-  line: {color:'rgb(97,255,51}'},
+  line: {color:'rgb(129, 203, 0)'},
   name:'periode'
 };
   var trace4 = {
